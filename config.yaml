@@ -1,0 +1,34 @@
+app:
+  api_host: "127.0.0.1"
+  api_port: 5000
+  frame_width: 960
+  frame_height: 540
+  display: true
+
+video:
+  source: 0
+  skip_frames: 1
+
+detection:
+  use_yolo_if_available: true
+  confidence_threshold: 0.45
+  nms_threshold: 0.35
+  hog_stride: [8, 8]
+  hog_padding: [16, 16]
+  hog_scale: 1.05
+
+rules:
+  crowd_threshold: 5
+  min_motion_area: 1500
+  save_intrusion_snapshot: true
+  restricted_zone:
+    enabled: true
+    points:
+      - [620, 140]
+      - [930, 140]
+      - [930, 520]
+      - [620, 520]
+
+outputs:
+  alerts_file: "smart_surveillance/outputs/alerts.json"
+  snapshots_dir: "smart_surveillance/outputs/snapshots"
